@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  test:
     docker:
       - image: cimg/ruby:3.0.4
         environment:
@@ -44,6 +44,6 @@ jobs:
           command: bundle exec rubocop
 
 workflows:
-  build:
+  tests:
     jobs:
       - test
