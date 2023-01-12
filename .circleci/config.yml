@@ -44,6 +44,6 @@ jobs:
           command: bundle exec rubocop
 
 workflows:
-  test:
+  build:
     jobs:
       - test
