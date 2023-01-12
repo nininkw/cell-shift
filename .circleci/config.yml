@@ -1,21 +1,24 @@
 version: 2.1
 jobs:
-  test:
+  build:
     docker:
       - image: cimg/ruby:3.0.4
         environment:
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
-      - image: cimg/mysql:8.0
+          TZ: 'Asia/Tokyo'
+      - image: cimg/mysql:5.5.8
         name: db
         environment:
-            MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          MYSQL_ROOT_HOST: '%'
+
     steps:
       - checkout
       - restore_cache:
           keys:
-              - v1-dependencies-{{ checksum "Gemfile.lock" }}
-              - v1-dependencies-
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
       # set up
       - run:
           name: install gems
@@ -33,14 +36,14 @@ jobs:
           command: bundle exec rails db:create db:schema:load
       # run test
       - run:
-          name: run test
+          name: run rspec
           command: bundle exec rspec --profile 10
       # run linter
       - run:
-          name: run linter
+          name: run rubocop
           command: bundle exec rubocop
 
 workflows:
-  sample:
+  test:
     jobs:
       - test
