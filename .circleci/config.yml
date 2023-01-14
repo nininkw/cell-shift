@@ -7,7 +7,7 @@ jobs:
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
           TZ: 'Asia/Tokyo'
-      - image: cimg/mysql:5.5.8
+      - image: cimg/mysql:5.5
         name: db
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
