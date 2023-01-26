@@ -11,6 +11,40 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header-left">
+        LOGO
+      </div>
+      <div class="header-right">
+        <% if user_signed_in? %>  
+          <div class="nav-bar">
+            <p><%= current_user.username %></p>
+            <% if current_user.icon? %>
+              <%= image_tag current_user.icon.url, class: "icon_img" %>
+            <% else %>
+              <%= image_tag "/assets/images/icon_defo.jpeg", class: "icon_img" %>
+            <% end %>
+          </div>
+          <nav class="menu">
+            <ul>
+              <li><%= link_to "シフト", _path %></li>
+              <li><%= link_to "店舗", _path %></li>
+              <li><%= link_to "スタッフ", _path %></li>
+              <li><%= link_to "設定", user_path(id: current_user.id) %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </nav>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path,  class: "link login" %>
+          <%= link_to "新規登録", new_user_registration_path,  class: "link signup" %>
+        <% end %>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p>© <%= Time.current.year %> CELL SHIFT</p>
+    </footer>
   </body>
 </html>
