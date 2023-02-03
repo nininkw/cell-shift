@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "ヒラギノ丸ゴ ProN","メイリオ",sans-serif;
+}
+
+* li {
+  list-style: none; 
+} 
+
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  border-bottom: solid 2px #71C9CE;
+}
+
+.header-left {
+}
+
+.header-right {
+  float: right;
+}
+
+.header-right ul {
+  display: flex;
+}
+
+main {
+  flex: 1;
+  background-color: #E3FDFD;
+}
+
+footer {
+  width: 100%;
+  border-top: solid 2px #CBF1F5;
+}
+
+footer p {
+  font-size: 12px;
+  text-align: center;
+}
