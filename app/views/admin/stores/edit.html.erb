@@ -1,0 +1,49 @@
+<div class="store-info-wrapper">
+  <h2>店舗情報</h2>
+  <div class="form-area">
+    <%= form_with model: @store, url: admin_stores_path, action: "update", id: @store.id do |f| %>
+      <div class="input-field">
+        <%= f.label :name, "店舗名" %>
+        <%= f.text_field :name, required: true %>
+      </div>
+      <div class="input-field">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, required: true %>
+      </div>
+      <div class="input-field">
+        <%= f.label :business_hour, "営業時間" %>
+        <%= f.time_select :open_at, {required: true}, {class: "time-select"} %> 〜 <%= f.time_select :close_at, {required: true}, {class: "time-select"} %>
+      </div>
+      <div class="input-field">
+        <%= f.label :near_stations, "最寄駅" %>
+        <%= f.text_field :near_stations, required: true %>
+      </div>
+      <div class="input-field">
+        <%= f.label :shift_pattern, "シフトパターン" %><br>
+        <%= f.radio_button :shift_pattern, "通し" %>
+        <%= f.label :shift_pattern, "通し", value: "通し" %>
+        <br>
+        <%= f.radio_button :shift_pattern, "早遅" %>
+        <%= f.label :shift_pattern, "早遅", value: "早遅" %>
+        <br>
+        <%= f.radio_button :shift_pattern, "早中遅" %>
+        <%= f.label :shift_pattern, "早中遅", value: "早中遅" %>
+
+      </div>
+      <div class="input-field">
+        <%= f.label :shift_schedule, "シフト時間割" %><br>
+        早 <%= f.time_select :shiftin, {required: true, ignore_date:true}, {class: "time-select"} %>
+         〜 <%= f.time_select :shiftout, {required: true, include_blank: true, ignore_data:true}, {class: "time-select"} %>
+         <br>
+        中 <%= f.time_select :shiftin, {ignore_date:true, include_blank: true}, {class: "time-select"} %>
+         〜 <%= f.time_select :shiftout, {required: true, include_blank: true, ignore_data:true}, {class: "time-select"} %>
+         <br>
+        遅 <%= f.time_select :shiftin, {ignore_date:true, include_blank: true}, {class: "time-select"}%>
+         〜 <%= f.time_select :shiftout, {required: true, include_blank: true, ignore_data:true}, {class: "time-select"} %>
+      </div>
+      <div class="btn-field">
+        <%= f.submit "更新", class: "btn update" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+// Place all the styles related to the admin::stores controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.stores-wrapper {
+  width: 100%;
+}
+
+.above-contents {
+  margin: 20px 30px;
+
+  h2 {
+    display: inline;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 40px;
+  }
+
+  .create-store-btn {
+    padding: 2px 10px;
+    background-color: #FBC067;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    line-height: 40px;
+    float: right;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+    transition: all .3s;
+  }
+
+  .create-store-btn:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
+    border-color: transparent;
+  }
+}
+
+.stores-container {
+  display: flex;
+  margin: 40px;
+}
+
+.store-box {
+  width: 25%;
+  height: 35vh;
+  margin: 10px  ;
+  background-color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+  transition: all .3s;
+  text-align: center;
+
+  h3 {
+    font-size: 28px;
+  }
+
+  .business-hour {
+    font-size: 20px;
+  }
+
+  .shift-pattern {
+    width: 50%;
+    float: left;
+    margin: 45px 0;
+  }
+
+  .link {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+}
+
+.store-info-wrapper {
+  width: 100%;
+
+  h2 {
+    margin:30px;
+  }
+}
+
+.form-area {
+  padding: 0 50px;
+}
+
+.input-field {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+
+  input[type="text"] {
+    height: 30px;
+    width: 45%;
+    border: solid 1px #C6C3C3;
+    border-radius: 3px;
+  }
+
+  .time-select {
+    height: 30px;
+    width: 70px;
+    border: solid 1px #C6C3C3;
+    border-radius: 3px;
+  }
+
+  p {
+    margin-top: 0px;
+  }
+}
+
+.btn-field {
+  float: right;
+}
+
+.btn {
+  padding: 5px 25px;
+  border: none;
+  font-size: 20px;
+  border-radius: 7px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+  transition: all .3s;
+  background-color: #A6E3E9;
+}
+
+.btn:hover {
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
+  border-color: transparent;
+}

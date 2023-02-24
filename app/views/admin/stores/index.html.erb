@@ -1,0 +1,17 @@
+<div class="stores-wrapper">
+  <div class="above-contents">
+    <h2>店舗一覧</h2>
+    <%= link_to "店舗を追加", new_admin_store_path, class:"create-store-btn" %>
+  </div>
+  <div class="stores-container">
+    <% @stores.each do |store| %>
+      <div class="store-box">
+        <h3><%= store.name %></h3>
+        <p class="business-hour"><%= store.open_at.strftime( "%-H:%M" ) %>〜<%= store.close_at.strftime( "%-H:%M" ) %></p>
+        <p class="shift-pattern"><%= store.shift_pattern %></p>
+        <p class="link confirm"><%= link_to "シフト確認" %></p>
+        <p class="link edit"><%= link_to "詳細・編集", edit_admin_store_path(store.id) %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

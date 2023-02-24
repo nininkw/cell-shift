@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'top#index'
-    resouces: stores
+    resources :stores
   end
 
   namespace :user do
