@@ -1,15 +1,17 @@
 class Admin::StoresController < ApplicationController
+  FORM_COUNT = 3
+
   def index
     @stores = Store.all
   end
 
   def new
     @store = Store.new
+    FORM_COUNT.times { @store.shift_frames.build }
   end
 
   def create
     @store = Store.new(store_params)
-    binding.pry
     if @store.save
       redirect_to admin_stores_path
     else
@@ -30,8 +32,20 @@ class Admin::StoresController < ApplicationController
     end
   end
 
+  def destroy
+    @store = Store.find(params[:id])
+    @store.destroy
+    redirect_to admin_stores_path
+  end
+
   private
-    def store_params
-      params.require(:store).permit(:name, :address, :open_at, :close_at, :near_stations, :shift_pattern, :shift_in, :shift_out)
-    end
+
+  def store_params
+    params.
+      require(:store).
+      permit(
+        :name, :open_at, :close_at, :need_workers,
+      shift_frames_attributes: [:id, :shift_name, :start_at, :finish_at]
+      )
+  end
 end

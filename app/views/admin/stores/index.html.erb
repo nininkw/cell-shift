@@ -8,10 +8,13 @@
       <div class="store-box">
         <h3><%= store.name %></h3>
         <p class="business-hour"><%= store.open_at.strftime( "%-H:%M" ) %>〜<%= store.close_at.strftime( "%-H:%M" ) %></p>
-        <p class="shift-pattern"><%= store.shift_pattern %></p>
         <p class="link confirm"><%= link_to "シフト確認" %></p>
         <p class="link edit"><%= link_to "詳細・編集", edit_admin_store_path(store.id) %></p>
+        <p class="link destroy">
+          <%= link_to "削除", admin_store_path(store.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </p>
       </div>
     <% end %>
   </div>
 </div>
+      
