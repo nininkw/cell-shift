@@ -1,0 +1,38 @@
+<div class="store-info-wrapper">
+  <h2>店舗情報</h2>
+  <div class="form-area">
+    <%= form_with model: @store, url: admin_stores_path, action: "update", id: @store.id, local: true do |f| %>
+      <div class="input-field">
+        <%= f.label :name, "店舗名" %>
+        <%= f.text_field :name, required: true %>
+      </div>
+      <div class="input-field">
+        <%= f.label :business_hour, "営業時間" %>
+        <%= f.time_select :open_at, {required: true}, {class: "time-select"} %> 〜 <%= f.time_select :close_at, {required: true}, {class: "time-select"} %>
+      </div>
+      <div class="input-field">
+        <%= f.label :shift_pattern, "必要人数／日" %>
+        <%= f.select :need_workers, {"0":0,"1":1,"2":2,"3":3}, {include_blank: '選択してください', required: true}, {class: "select-box"} %> 人
+      </div>
+      <%= f.fields_for :shift_frames do |frame| %>
+        <div class="input-field">
+          <%= frame.label :shift_name, "シフト名" %>
+          <%= frame.select :shift_name, {"通し":0,"早":1,"中":2,"遅":3}, {include_blank: '選択してください', required: true}, { class: "select-box"} %>
+        </div>
+        <div class="input-field">
+          <%= frame.label :start_at, "シフト時間" %>
+          <%= frame.time_select :start_at, 
+          {required: true, include_blank: true, ignore_data:true},
+          {class: "time-select"} %> 
+          〜 
+          <%= frame.time_select :finish_at,
+          {required: true, include_blank: true, ignore_data:true}, 
+          {class: "time-select"} %>
+        </div>
+      <% end %>
+      <div class="btn-field">
+        <%= f.submit "更新", class: "btn update" %>
+      </div>
+    <% end %>
+  </div>
+</div>

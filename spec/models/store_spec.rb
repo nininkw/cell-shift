@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Store, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  has_many: users
+  has_many: shift_frames
 end
