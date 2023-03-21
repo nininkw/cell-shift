@@ -1,7 +1,7 @@
 <div class="store-info-wrapper">
   <h2>店舗情報</h2>
   <div class="form-area">
-    <%= form_with model: @store, url: admin_stores_path, action: "update", id: @store.id, local: true do |f| %>
+    <%= form_with model: [:admin, @store], local: true do |f| %>
       <div class="input-field">
         <%= f.label :name, "店舗名" %>
         <%= f.text_field :name, required: true %>

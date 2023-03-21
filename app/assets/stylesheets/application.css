@@ -61,3 +61,52 @@ footer p {
   font-size: 12px;
   text-align: center;
 }
+
+.sign-in-up-container {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-up-box {
+  width: 350px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+}
+
+.field {
+  margin-top: 40px;
+}
+
+input[type="text"],[type="email"],[type="password"]{
+  border: solid 1px #C6C3C3;
+  border-radius: 3px;
+  width: 300px;
+  height: 40px;
+}
+
+.remember-checkbox {
+  margin-top: 3px;
+}
+
+.remember-me {
+  color: #757575;
+  font-size: 12px;
+}
+
+.sign-btn {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 40px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 3px;
+  background-color: #71C9CE;
+}
