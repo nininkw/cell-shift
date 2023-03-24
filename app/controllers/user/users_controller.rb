@@ -19,6 +19,6 @@ class User::UsersController < ApplicationController
   private
 
   def profile_params
-    require(:user).permit(:name, :shift_stabilize, max_work, wday[], store_id[]).merge(id: current_user.id)
+    params.require(:user).permit(:name, :shift_stabilize, :max_work, wday: [], store_ids: []).merge(id: current_user.id)
   end
 end
