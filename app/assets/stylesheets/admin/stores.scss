@@ -116,6 +116,7 @@
 
 .btn-field {
   float: right;
+  margin-bottom: 10px;
 }
 
 .btn {
@@ -126,7 +127,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
   transition: all .3s;
   background-color: #A6E3E9;
-}
+} 
 
 .btn:hover {
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
