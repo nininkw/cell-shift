@@ -1,0 +1,71 @@
+// Place all the styles related to the shift_posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.calendar-box {
+  width: 80%;
+  margin: 0 auto;
+
+  h3 {
+    color: white;
+    background-color: #71C9CE;
+    border-radius: 5px;
+    text-align: center;
+  }
+}
+
+.simple-calendar {
+  .prev-month {
+    color: #D4D4D4;
+  }
+  .next-month {
+    color: #D4D4D4;
+  }
+  .wday-0 {
+    color: #ff6e6d;
+  }
+  .wday-6 {
+    color: #3ea8ff;
+  }
+
+  .calendar-table {
+    background-color: white;
+    border-radius: 10px;
+    th {
+      text-align: center;
+    }
+    th:nth-last-child(2) {
+      color: #3ea8ff;
+    }
+    th:last-child {
+      color: #ff6e6d;
+    }
+    td {
+      background-color: white;
+    }
+    .selected {
+      background-color: #F0FFC2;
+    }
+  }
+}
+
+.btn-area {
+  margin-top: 20px;
+  text-align: center;
+
+  #post-btn {
+  padding: 3px 40px;
+  border: none;
+  font-size: 18px;
+  border-radius: 7px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+  transition: all .3s;
+  background-color: #FFD124;
+  }
+
+  #post-btn:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
+    border-color: transparent;
+  }
+}

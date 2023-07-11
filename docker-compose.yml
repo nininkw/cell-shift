@@ -13,7 +13,8 @@ services:
     tty: true
     stdin_open: true
     environment:
-        - 'DATABASE_PASSWORD=password' 
+        DATABASE_PASSWORD: password
+        WEBPACKER_DEV_SERVER_HOST: webpacker
     depends_on: 
         - db
     links:
@@ -22,7 +23,17 @@ services:
     image: mysql:5.7
     ports:
         - '3306:3306'
-    volumes:
+    volumes:  
         - 'mysql_data:/var/lib/mysql'
     environment:
         MYSQL_ROOT_PASSWORD: password
+        TZ: "Asia/Tokyo"
+  webpacker:
+    build: .
+    command: bash -c 'rm -rf public/packs/* || true && bin/webpack-dev-server'
+    volumes:
+      - .:/cell_shift
+    ports: 
+      - '3035:3035'
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0

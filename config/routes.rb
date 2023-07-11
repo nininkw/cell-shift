@@ -1,24 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
-  }
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
-
-  namespace :admin do
-    root 'top#index'
-    resources :stores
-  end
 
   #メモ：userはシフト投稿とシフト確認のみ
-  namespace :user do
-    root 'top#index'
-    resources :users
+  root to: 'top#top'
+  resources :users, only: [:show, :edit, :update]
+  resources :shift_posts, except: [:index]
+
+  namespace :admin do
+    root to: 'top#top'
+    resources :users  
+    resources :stores
+    resources :shift_posts, only: [:index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,13 @@
+<div class="shift-post-container">
+  <div class="calendar-box">
+    <h3>出勤希望日を選んでください</h3>
+      <%= month_calendar start_date: Date.current.next_month do |date| %>
+        <%= date %>
+      <% end %>
+      <div class="btn-area">
+        <button id="post-btn">提出</button>
+      </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'shift_post' %>
+

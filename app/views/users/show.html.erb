@@ -1,0 +1,41 @@
+<div class="profile-container">
+  <div class="profile-box">
+    <h3><%= @user.name %> さんのプロフィール</h3> 
+    <table>
+      <tr>
+        <td>専門シフト</td><td><%= @user.shift_stabilize_text %></td>
+      </tr>
+      <tr>
+        <td>出勤不可曜日</td><td><%= @user.wday_text %></td>
+      </tr>
+      <tr>
+        <td>週◯回</td><td><%= @user.max_work_text %>回</td>
+      </tr>
+      <tr>
+        <td>土日祝勤務</td>
+        <td>
+          <% if @user.holiday == true %>
+            あり
+          <% else %>
+            なし
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>シフトイン可能店舗</td>
+        <td>
+          <% @user.store_users.each do |store_user| %>
+            <p><%= store_user.store.name %></p>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <%= link_to "編集する", edit_user_path(id: current_user.id), class: "btn-to-edit" %>
+      <%= link_to "ホーム", current_user.admin? ? admin_root_path : root_path, class: "btn-to-top" %>
+    </div>
+  </div>
+  <div>
+    <%= link_to "ユーザー名、パスワードの変更はこちらから", edit_user_registration_path %>
+  </div>
+</div>

@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -34,17 +35,36 @@ body {
 header {
   width: 100%;
   border-bottom: solid 2px #71C9CE;
+  display: flex;
 }
 
 .header-left {
+  height: 45px;
+  width: 50%;
+  line-height: 45px;
+  font-size: 40px;
 }
 
 .header-right {
-  float: right;
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  line-height: 45px;
 }
 
 .header-right ul {
   display: flex;
+  margin: 0;
+}
+
+.header-right li {
+  padding-right: 30px; 
+  color: black;
+}
+
+.link {
+  margin-right: 20px;
+  line-height: 45px;
 }
 
 main {
@@ -72,8 +92,7 @@ footer p {
 .sign-in-up-box {
   width: 350px;
   height: auto;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
@@ -109,4 +128,8 @@ input[type="text"],[type="email"],[type="password"]{
   border: none;
   border-radius: 3px;
   background-color: #71C9CE;
+}
+
+.update {
+  margin: 20px auto;
 }

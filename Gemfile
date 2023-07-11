@@ -36,6 +36,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rubocop-airbnb'
   gem 'pry-rails'
+  gem 'pry-nav'
 end
 
 group :development do
@@ -62,4 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
-gem 'cocoon'
+gem 'simple_calendar','~>2.0'

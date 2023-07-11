@@ -9,17 +9,54 @@
   justify-content: center;
   align-items: center;
 
-  h2 {
-    
+  h3 {
+    margin-top: 15px;
+    font-size: 18px;
+    text-align: center;
   }
 }
 
 .profile-box {
   padding: 30px;
-  display: flex;
   justify-content: center;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
-}
 
+  tr {
+    border-bottom: 3px solid #CBF1F5;
+  }
+
+  td {
+    padding-top: 20px;
+    padding-right: 20px;
+  }
+
+  .btn-to-edit {
+    display: block;
+    margin-top: 30px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 3px;
+    background-color: #71C9CE;
+  }
+   
+  .btn-to-top {
+    display: block;
+    margin-top: 10px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 3px;
+    background-color: #A6E3E9;
+  }
+}
