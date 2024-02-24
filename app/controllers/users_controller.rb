@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm_shift_posts
+    @user = User.find(params[:id])
+    @shift_posts_by_date = @user.shift_posts.group_by { |sp| sp.selected_dates }
+  end
+
   private
 
   def profile_params

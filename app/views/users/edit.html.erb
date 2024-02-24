@@ -28,7 +28,7 @@
       <% if current_user.admin? %>
         <div class="input-field">
           <%= f.label :wages, "時給" %>
-          <%= f.number_field :wages, min: 1100, {required: true}, {class: "select-box"} %>
+          <%= f.number_field :wages, min: 1100, required: true, class: "select-box" %>
         </div>
         <div class="input-field">
           <%= f.label :holiday, "土日祝勤務可否" %>
@@ -40,7 +40,7 @@
         </div>
       <% end %>
       <div class="btn-field">
-        <%= f.submit "更新", class: "btn update" %
+        <%= f.submit "更新", class: "btn update" %>
       </div>
     <% end %>
   </div>

@@ -6,12 +6,14 @@ Rails.application.routes.draw do
 
   #メモ：userはシフト投稿とシフト確認のみ
   root to: 'top#top'
-  resources :users, only: [:show, :edit, :update]
-  resources :shift_posts, except: [:index]
-
+  resources :users, only: [:show, :edit, :update] do
+    get "confirm_shift_posts", on: :member
+  end
+  resources :shift_posts, except: [:index] 
+  
   namespace :admin do
     root to: 'top#top'
-    resources :users  
+    resources :users
     resources :stores
     resources :shift_posts, only: [:index]
   end

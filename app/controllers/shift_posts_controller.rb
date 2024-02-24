@@ -1,31 +1,35 @@
-class ShiftPostsController < ApplicationController
-include AjaxHelper
+class ShiftPostsController < ApplicationController  
 
   def new
     @shift_post = ShiftPost.new
   end
 
   def create
-    saved = true
-    ShiftPost.new(shift_post_params).selected_dates.each do |date|
-      @shift_post = ShiftPost.new(shift_post_params)
-      @shift_post.selected_dates = Date.parse(date)
-      saved = saved && @shift_post.save
-    end
-    if saved
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.js { render ajax_redirect_to(root_path) }
-      end 
-    else
-      respond_to do |format|
-        format.html { render :new }
+    selected_dates = params[:shift_post][:selected_dates]
+    valid_dates = selected_dates.select do |ymd|
+      begin
+        Date.parse(ymd)
+        true
+      rescue ArgumentError
+        false
       end
     end
-  end
 
-  def show
-    @shift_post = ShiftPost.find(params[:id])
+    saved = true
+    valid_dates.each do |valid_date|
+      @shift_post = ShiftPost.new(shift_post_params)
+      @shift_post.selected_dates = valid_date
+      unless @shift_post.save
+        saved = false
+        break
+      end
+    end
+    
+    if saved
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -34,14 +38,18 @@ include AjaxHelper
 
   def update
     @shift_post = ShiftPost.find(params[:id])
-    @shift_post.user_id = params[:data][:user_id]
-    @shift_post.selected_dates = params[:data][:selectedDates]
-    if @shift_post.update
-      redirect_to user_root_path
+    if @shift_post.saved
+      redirect_to root_path
     else
       render :edit
-    end   
+    end
   end
+
+  def destroy
+    @shift_post = ShiftPost.find(params[:id])
+    @shift_post.destroy
+  end
+  
 
   private
 

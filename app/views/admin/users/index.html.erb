@@ -1,5 +1,5 @@
 <div class="index-container">
-  <h3>ユーザー一覧</h3>
+  <h3>スタッフ一覧</h3>
   <table>
     <thead>
       <tr>
@@ -15,8 +15,8 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.name %></td>
-          <td><%= user.stores.name %></td>
-          <td><%= user.wages %></td>
+          <td><span class="mini-label">担当店舗</span><%= user.stores.name %></td>
+          <td><span class="mini-label">時給</span><%= user.wages %></td>
           <td><%= link_to "確認する", "#" %></td>
           <td><%= link_to "編集する", admin_user_path(user.id) %></td>
           <td>

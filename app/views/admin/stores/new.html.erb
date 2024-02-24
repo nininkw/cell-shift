@@ -9,11 +9,11 @@
       <div class="input-field">
         <%= f.label :business_hour, "営業時間" %>
         <%= f.time_select :open_at, 
-        {required: true, include_blank: true}, 
+        {required: true, prompt: true, ignore_date: true}, 
         {class: "time-select"} %> 
         〜 
         <%= f.time_select :close_at, 
-        {required: true, include_blank: true}, 
+        {required: true, prompt: true, ignore_date: true}, 
         {class: "time-select"} %>
       </div>
       <div class="input-field">

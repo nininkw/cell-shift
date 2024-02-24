@@ -14,7 +14,6 @@
   document.addEventListener("turbolinks:load", function() {
     let cells = document.querySelectorAll(".calendar-table td");
     for (let i = 0; i < cells.length; i++) {
-      let selectedDates = [];
       cells[i].onclick = function(e) {
         let cell = e.target;
         let date = cell.innerText;
@@ -50,7 +49,7 @@
     postBtn.addEventListener("click", function(e) {
       let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
       let selectedDates = getSelectedDates();
-      fetch("/user/shift_posts", {
+      fetch("/shift_posts", {
         method: "POST",
         headers: {"Content-Type": "application/json", "X-CSRF-Token": csrfToken},
         body: JSON.stringify({
