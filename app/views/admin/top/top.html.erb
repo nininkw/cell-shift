@@ -1,0 +1,28 @@
+<div class="admin-top-wrapper">
+  <div class="about-container">
+    <h1><span class="under">CELL SHIFT</h1>
+    <p>
+      CELL SHIFT(セルシフト)は<br>
+      直感的な操作で<br>シフトを調整できるアプリです。<br>
+      複雑で面倒な毎月のシフト調整業務を<br>簡単楽ちんにします。<br>
+      右のメニューから<br>
+      やることをお選びください。
+    </p>
+  </div>
+  <div class="menu-box">
+    <ul>
+      <li class="menu-cell-b">
+        <%= link_to "#" do %><p>シフト<br>編集</p><% end %>
+      </li>
+      <li class="menu-cell-w">
+        <%= link_to admin_stores_path do %><p>店舗<br>編集</p><% end %>
+      </li>
+      <li class="menu-cell-w">
+        <%= link_to admin_users_path do %><p>スタッフ<br>編集</p><% end %>
+      </li>
+      <li class="menu-cell-b">
+        <%= link_to admin_shift_posts_path do %><p>シフト<br>一覧</p><% end %>
+      </li>
+    </ul>
+  </div>
+</div>

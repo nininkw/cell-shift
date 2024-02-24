@@ -1,0 +1,27 @@
+<div class="index-container">
+  <h3>シフト一覧</h3> 
+  <table>
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>担当店舗</th>
+        <th>出勤可能日</th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shift_posts.each do |shift_post| %>
+        <tr>
+          <td>
+            <%= link_to "/users/#{shift_post.user_id}" do %>
+              <%= shift_post.user.name %>
+            <% end %>
+          </td>
+          <td><%= shift_post.user.store.name %></td>
+          <td><%= shift_post.selected_dates %></td>
+          <td><%= link_to "詳細", admin_shift_post_path(shift_post.user_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
+</div>

@@ -8,7 +8,7 @@ class Admin::StoresController < ApplicationController
   def new
     @store = Store.new
     FORM_COUNT.times { @store.shift_frames.build }
-  end
+  end 
 
   def create
     @store = Store.new(store_params)

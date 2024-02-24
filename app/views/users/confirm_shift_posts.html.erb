@@ -1,0 +1,13 @@
+<div class="shift-post-container">
+  <div class="calendar-box">
+    <%= month_calendar events: @shift_posts_by_date do |date, shift_posts| %>
+      <div>
+        <%= date %>
+        <% shift_posts.each do |shift_post| %>
+          <%= link_to '出勤希望', '#', id: "shift_post_#{shift_post.id}", class: 'shift-post-link', data: { toggle: 'modal', target: '#shiftPostModal' } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

@@ -14,7 +14,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: password
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   host: db
   port: 3306
 
@@ -54,3 +54,4 @@ production:
   database: cell_shift_production
   username: cell_shift
   password: <%= ENV['CELL_SHIFT_DATABASE_PASSWORD'] %>
+  

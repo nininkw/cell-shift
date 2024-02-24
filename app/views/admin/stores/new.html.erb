@@ -1,5 +1,5 @@
 <div class="store-info-wrapper">
-  <h2>店舗情報</h3>
+  <h2>店舗情報</h2>
   <div class="form-area">
     <%= form_with model: [:admin, @store], local: true do |f| %>
       <div class="input-field">
@@ -9,11 +9,11 @@
       <div class="input-field">
         <%= f.label :business_hour, "営業時間" %>
         <%= f.time_select :open_at, 
-        {required: true, include_blank: true, ignore_data:true}, 
+        {required: true, prompt: true, ignore_date: true}, 
         {class: "time-select"} %> 
         〜 
         <%= f.time_select :close_at, 
-        {required: true, include_blank: true, ignore_data:true}, 
+        {required: true, prompt: true, ignore_date: true}, 
         {class: "time-select"} %>
       </div>
       <div class="input-field">
@@ -28,11 +28,11 @@
         <div class="input-field">
           <%= frame.label :start_at, "シフト時間" %>
           <%= frame.time_select :start_at, 
-          {required: true, include_blank: true, ignore_data:true},
+          {required: true, include_blank: true},
           {class: "time-select"} %> 
           〜 
           <%= frame.time_select :finish_at,
-          {required: true, include_blank: true, ignore_data:true}, 
+          {required: true, include_blank: true}, 
           {class: "time-select"} %>
         </div>
       <% end %>

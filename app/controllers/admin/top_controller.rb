@@ -1,4 +1,4 @@
 class Admin::TopController < ApplicationController
-  def index
+  def top
   end
 end

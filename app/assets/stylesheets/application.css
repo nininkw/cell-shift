@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -24,6 +25,10 @@
   list-style: none; 
 } 
 
+html {
+ font-size: 10px;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -33,18 +38,47 @@ body {
 
 header {
   width: 100%;
+  line-height: 45px;
+  background-color: white;
   border-bottom: solid 2px #71C9CE;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 .header-left {
+  width: 50%;
+  height: 45px;
+  font-size: clamp(28px,3vw,36px);
 }
 
 .header-right {
-  float: right;
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  font-size: clamp(10px,1.5vw,16px);
+  position: relative;
 }
 
-.header-right ul {
+.navigation ul {
   display: flex;
+  margin: 0;
+}
+
+.navigation li {
+  padding-right: 30px; 
+  color: black;
+}
+
+.menu-trigger {
+  display: none;
+}
+
+.link {
+  margin-right: 20px;
+  line-height: 45px;
 }
 
 main {
@@ -72,8 +106,7 @@ footer p {
 .sign-in-up-box {
   width: 350px;
   height: auto;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
@@ -102,7 +135,7 @@ input[type="text"],[type="email"],[type="password"]{
 .sign-btn {
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 100%;
+  width: 50%;
   height: 40px;
   font-weight: bold;
   letter-spacing: 0.1em;
@@ -110,3 +143,101 @@ input[type="text"],[type="email"],[type="password"]{
   border-radius: 3px;
   background-color: #71C9CE;
 }
+
+.sign-btn:hover {
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
+  border-color: transparent;
+}
+
+.update {
+  margin: 20px auto;
+}
+
+@media (max-width: 950px) {
+  .header-right {
+    width: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-right {
+    width: 50%;
+  }
+
+  .header-left {
+    width: 50%;
+  }
+
+  .menu-trigger {
+    width: 6rem;
+    height: 4.4rem;
+    cursor: pointer;
+    background-color: white;
+    position: fixed;
+    top: 1px;
+    right: 1px;
+    display: inline-block;
+  }
+
+  .menu-trigger span {
+    display: inline-block;
+    background-color: #3E3E3E;
+    width: 70%;
+    height: 0.2rem;
+    position: absolute;
+    left: 0;
+    transition: all 0.5s;
+  }
+
+  .menu-trigger span:nth-child(1) {
+    top: 20%;
+  }
+
+  .menu-trigger.active span:nth-child(1) {
+    top: 20%;
+    transform: translateY(0.6rem) rotate(-45deg);
+  }
+
+  .menu-trigger span:nth-child(2) {
+    top: 48%;
+  }
+
+  .menu-trigger.active span:nth-child(2) {
+    top: 48%;
+    opacity: 0;
+  }
+
+  .menu-trigger span:nth-child(3) {
+    bottom: 20%;
+  }
+
+  .menu-trigger.active span:nth-child(3) {
+    bottom: 48%;
+    transform: translateY(-0.6rem) rotate(45deg);
+  }
+
+  .navigation {
+    position: absolute;
+    top: 4.6rem;
+    width: 200%;
+    height: auto;
+    background-color: #fff;
+    transform: translate(100%);
+    transition: all .5s ;
+    z-index: 100;
+  }
+
+  .navigation.open {
+    transform: translateZ(0);
+  }
+
+  .navigation ul {
+    display: block;
+  }
+  
+  .navigation li {
+    text-align: center;
+    color:rgba(0, 0, 0, 0.5); 
+  }
+}
+

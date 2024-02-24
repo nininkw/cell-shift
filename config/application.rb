@@ -16,12 +16,12 @@ module CellShift
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.autoload_paths += Dir.glob("#{config.root}/app/lib")
 
     config.i18n.default_locale = :ja
     config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :utc
   end
 end

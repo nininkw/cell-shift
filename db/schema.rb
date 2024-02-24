@@ -10,33 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_18_030412) do
-
-  create_table "admin_users", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "admin_id", null: false
-    t.bigint "store_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["admin_id"], name: "index_admin_users_on_admin_id"
-    t.index ["store_id"], name: "index_admin_users_on_store_id"
-  end
-
-  create_table "admins", charset: "utf8mb4", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.date "dayoff"
-    t.integer "max_work"
-    t.boolean "priority"
-    t.integer "store_id"
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
+ActiveRecord::Schema.define(version: 2024_02_22_102741) do
 
   create_table "shift_frames", charset: "utf8mb4", force: :cascade do |t|
     t.string "shift_name"
@@ -46,6 +20,14 @@ ActiveRecord::Schema.define(version: 2023_03_18_030412) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_shift_frames_on_store_id"
+  end
+
+  create_table "shift_posts", charset: "utf8mb4", force: :cascade do |t|
+    t.date "selected_dates"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_shift_posts_on_user_id"
   end
 
   create_table "store_users", charset: "utf8mb4", force: :cascade do |t|
@@ -83,13 +65,13 @@ ActiveRecord::Schema.define(version: 2023_03_18_030412) do
     t.boolean "holiday"
     t.boolean "priority"
     t.integer "store_id"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "admin_users", "admins"
-  add_foreign_key "admin_users", "stores"
   add_foreign_key "shift_frames", "stores"
+  add_foreign_key "shift_posts", "users"
   add_foreign_key "store_users", "stores"
   add_foreign_key "store_users", "users"
 end

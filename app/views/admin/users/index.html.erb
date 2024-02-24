@@ -1,0 +1,29 @@
+<div class="index-container">
+  <h3>スタッフ一覧</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>担当店舗</th>
+        <th>時給</th>
+        <th>シフト確認</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><span class="mini-label">担当店舗</span><%= user.stores.name %></td>
+          <td><span class="mini-label">時給</span><%= user.wages %></td>
+          <td><%= link_to "確認する", "#" %></td>
+          <td><%= link_to "編集する", admin_user_path(user.id) %></td>
+          <td>
+            <%= link_to "削除する", user_path(user.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table> 
+</div>

@@ -1,0 +1,45 @@
+<div class="profile-container">
+  <div class="profile-box">
+    <h3>プロフィール</h3>
+    <%= form_with model: @user, method: "patch", local: true do |f| %>
+      <div class="input-field">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, required: true %>
+      </div>
+      <div class="input-field">
+        <%= f.label :shift_stabilize, "専門シフト" %>
+        <%= f.select :shift_stabilize, {"特になし":0,"早":1,"中":2,"遅":3}, {include_blank: '選択してください', required: true}, { class: "select-box"} %>
+      </div>
+      <div class="input-field">
+        <%= f.label :wday, "出勤不可曜日" %></br>
+        <% ["日","月","火","水","木","金","土","特になし"].each_with_index do |wday,i| %>
+          <%= f.check_box :wday, {multiple: true}, i, nil %>
+          <%= wday %>
+        <% end %>
+      </div>
+      <div class="input-field">
+        <%= f.label :max_work, "週◯日？" %>
+        <%= f.select :max_work, {"2":0,"3":1,"4":2,"5":3}, {include_blank: '選択してください', required: true}, {class: "select-box"} %> 回
+      </div>
+      <div class="input-field">
+        <%= f.label :stores, "シフトイン可能店舗" %></br>
+        <%= f.collection_check_boxes( :store_ids, Store.all, :id, :name ) %>
+      </div>
+      <div class="input-field">
+        <%= f.label :wages, "時給" %>
+        <%= f.number_field :wages, {min: 1100, class: "select-box"} %>
+      </div>
+      <div class="input-field">
+        <%= f.label :holiday, "土日祝勤務可否" %>
+        <%= f.check_box :holiday, {class: "select-box"}, true, false %>
+      </div>
+      <div class="input-field">
+        <%= f.label :holiday, "シフト優先者" %>
+        <%= f.check_box :priority, {class: "select-box"}, true, false %>
+      </div>
+      <div class="btn-field">
+        <%= f.submit "更新", class: "btn update" %>
+      </div>
+    <% end %>
+  </div>
+</div>
