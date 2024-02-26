@@ -84,6 +84,7 @@ header {
 main {
   flex: 1;
   background-color: #E3FDFD;
+  margin-top: 4.5rem;
 }
 
 footer {
@@ -94,6 +95,20 @@ footer {
 footer p {
   font-size: 12px;
   text-align: center;
+}
+
+.alert {
+  text-align: center;
+  background-color: #FCFDBD;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.notice {
+  text-align: center;
+  background-color: #FCFDBD;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 
 .sign-in-up-container {
@@ -110,7 +125,27 @@ footer p {
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+  position: relative;
 }
+
+.guest-sign-up-box {
+  position: absolute;
+  top: 50rem;
+  display: flex;
+}
+
+.guest-btn{
+  margin: 2rem;
+  height: 3rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  background-color: #A6E3E9;
+  cursor: pointer;
+}
+
 
 .field {
   margin-top: 40px;
@@ -142,6 +177,7 @@ input[type="text"],[type="email"],[type="password"]{
   border: none;
   border-radius: 3px;
   background-color: #71C9CE;
+  cursor: pointer;
 }
 
 .sign-btn:hover {

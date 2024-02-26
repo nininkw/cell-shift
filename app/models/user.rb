@@ -10,13 +10,41 @@ class User < ApplicationRecord
 
   validates :name, presence: { message: "名前を入力してください" }
   VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\z/
-  validates :email, uniqueness: true, presence: true, length: { maximum: 255 },
+  validates :email, presence: true, length: { maximum: 255 },
+            uniqueness: { case_sensitive: false, unless: :guest_admin_email? }, 
             format: { with: VALID_EMAIL_REGEX }
   validates :shift_stabilize, inclusion: {in:0..3}, presence:  { message: "専門シフトの有無を入力してください" }
-  validates :wday, inclusion: {in:["日","月","火","水","木","金","土","特になし"]}
+  # WDAY_TEXT = ["日","月","火","水","木","金","土","特になし"]
+  # validates :wday, inclusion: {in: WDAY_TEXT}
   validates :max_work, inclusion: {in:0..3}
   validates :wages, numericality: {greater_than_or_equal_to: 1_113	}
 
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザー',
+                       email: 'guest@example.com',
+                       shift_stabilize: 0,
+                      #  wday: '特になし',
+                       max_work: 3 ,
+                       wages: 1300) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
+  def self.guest_admin
+    find_or_create_by!(name: 'ゲスト管理者',
+                       email: 'guest_admin@example.com',
+                       shift_stabilize: 0,
+                      #  wday: '特になし',
+                       max_work: 3,
+                       wages: 1500,
+                       admin: true) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
+  def guest_admin_email?
+    email == 'guest_admin@example.com'
+  end
 
   def shift_stabilize_text
     case shift_stabilize
@@ -50,7 +78,7 @@ class User < ApplicationRecord
     when 6
       "土"
     else
-      "不明な値"
+      "特になし"
     end
   end
 
