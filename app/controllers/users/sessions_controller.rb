@@ -24,4 +24,14 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def guest_sign_in
+    if params[:admin] == "true"
+      user = User.guest_admin
+    else
+      user = User.guest
+    end
+    sign_in user
+    redirect_to user.admin? ? admin_root_path : root_path, notice: 'ゲストとしてログインしました。'
+  end
 end

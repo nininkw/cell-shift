@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :ensure_normal_user, only: %i[update destroy]
   def show
     @user = User.find(params[:id])
   end
@@ -20,10 +21,34 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    if @user.email == 'guest@example.com' || @user.email == 'guest_admin@example.com'
+      reset_session
+      redirect_to :root
+    else
+      @user.update(is_valid: false)
+      reset_session
+      redirect_to new_user_session_path
+    end
+  end
+
   def confirm_shift_posts
     @user = User.find(params[:id])
     @shift_posts_by_date = @user.shift_posts.group_by { |sp| sp.selected_dates }
   end
+
+  def ensure_normal_user
+    @user = User.find(params[:id])
+    if @user.email == 'guest@example.com' || @user.email == 'guest_admin@example.com'
+      if current_user.admin?
+        redirect_to admin_root_path, alert: 'ゲストユーザーの更新・削除はできません。' and return
+      else
+        redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。' and return
+      end
+    end
+  end
+
 
   private
 

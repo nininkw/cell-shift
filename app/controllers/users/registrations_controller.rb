@@ -60,6 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  
   protected
   
   def update_resource(resource, params)
