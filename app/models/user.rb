@@ -10,10 +10,12 @@ class User < ApplicationRecord
 
   validates :name, presence: { message: "名前を入力してください" }
   VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\z/
-  validates :email, presence: true, length: { maximum: 255 },
-            uniqueness: { case_sensitive: false, unless: :guest_admin_email? }, 
-            format: { with: VALID_EMAIL_REGEX }
-  validates :shift_stabilize, inclusion: {in:0..3}, presence:  { message: "専門シフトの有無を入力してください" }
+  validates :email, presence: true, 
+                    length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false, unless: :guest_admin_email? }
+  validates :shift_stabilize, inclusion: {in:0..3},
+                              presence:  { message: "専門シフトの有無を入力してください" }
   # WDAY_TEXT = ["日","月","火","水","木","金","土","特になし"]
   # validates :wday, inclusion: {in: WDAY_TEXT}
   validates :max_work, inclusion: {in:0..3}
