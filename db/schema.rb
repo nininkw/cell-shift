@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_22_102741) do
+ActiveRecord::Schema.define(version: 2024_03_20_091717) do
 
   create_table "shift_frames", charset: "utf8mb4", force: :cascade do |t|
-    t.string "shift_name"
+    t.integer "shift_name"
     t.time "start_at"
     t.time "finish_at"
     t.bigint "store_id", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2024_02_22_102741) do
 
   create_table "stores", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
+    t.string "shift_schedule"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.time "open_at"

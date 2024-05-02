@@ -14,12 +14,13 @@ class User < ApplicationRecord
                     length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false, unless: :guest_admin_email? }
-  validates :shift_stabilize, inclusion: {in:0..3},
-                              presence:  { message: "専門シフトの有無を入力してください" }
+  validates :shift_stabilize, inclusion: {in:0..3}, 
+                              presence:  { message: "専門シフトの有無を入力してください" },
+                              on: :update
   # WDAY_TEXT = ["日","月","火","水","木","金","土","特になし"]
   # validates :wday, inclusion: {in: WDAY_TEXT}
-  validates :max_work, inclusion: {in:0..3}
-  validates :wages, numericality: {greater_than_or_equal_to: 1_113	}
+  validates :max_work, inclusion: {in:0..3}, on: :update
+  validates :wages, numericality: {greater_than_or_equal_to: 1_113	}, on: :update
 
   def self.guest
     find_or_create_by!(name: 'ゲストユーザー',

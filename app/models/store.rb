@@ -12,13 +12,6 @@ class Store < ApplicationRecord
   validates :need_workers, inclusion: {in:0..3}
   validate  :open_close_check
   validates_associated :shift_frames 
-  validates :shift_name, inclusion: {in:0..3}
-  validate  :start_finish_check
-
-  def start_finish_check
-    errors.add(:start_at, "勤務開始時間より前の時間を登録できません。") unless
-    self.start_at < self.finish_at
-  end
 
   def open_close_check
     errors.add(:close_at, "営業開始時間より前の時間を登録できません。") unless
