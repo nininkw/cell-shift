@@ -50,8 +50,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: cell_shift_production
-  username: cell_shift
-  password: <%= ENV['CELL_SHIFT_DATABASE_PASSWORD'] %>
+<<: *default
+database: <%= Rails.application.credentials.db[:database] %>
+username: <%= Rails.application.credentials.db[:username] %>
+password: <%= Rails.application.credentials.db[:password] %>
+socket: <%= Rails.application.credentials.db[:socket] %>
   
