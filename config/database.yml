@@ -52,10 +52,11 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.db[:database] %>
-  username: <%= Rails.application.credentials.db[:username] %>
-  password: <%= Rails.application.credentials.db[:password] %>
-  socket: <%= Rails.application.credentials.db[:socket] %>
+  database: cell_shift
+  username: root
+  password: Ninin0307z!
+  socket: /var/lib/mysql/mysql.sock
+  host: database-for-cell-shift.cxsog8uc6do1.ap-northeast-1.rds.amazonaws.com
 
 
     
